@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
+import my_settings
 
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 
@@ -22,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^+%!mnsrflamqkz!)dv&7kxt%zct-^)_c41+e59nxx$#%r0z*u'
+SECRET_KEY = my_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -77,12 +78,7 @@ WSGI_APPLICATION = 'tutorial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default':
-    dj_database_url.config(
-        default='sqlite:///{}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
-    )
-}
+DATABASES = my_settings.DATABASES
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
